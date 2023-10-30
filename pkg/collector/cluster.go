@@ -134,6 +134,7 @@ func (c *ClusterCollector) Get() ([]map[string]interface{}, error) {
 					log.Warn().Msgf("failed to parse 'last-applied-configuration' annotation of resource %s/%s: %v", r.GetNamespace(), r.GetName(), err)
 					continue
 				}
+				manifest["apiVersion"] = r.GetAPIVersion()
 				results = append(results, manifest)
 			}
 		}
